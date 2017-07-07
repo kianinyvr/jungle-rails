@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
+  #route for sending confirmation email
+  get 'shipconf' => "orders#shipconf"
+
 
   namespace :admin do
     root to: 'dashboard#show'

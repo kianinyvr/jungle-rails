@@ -52,8 +52,12 @@ class OrdersController < ApplicationController
         )
       end
     end
+
     order.save!
+    UserMailer.invoice_email(order)
     order
+
+
   end
 
   # returns total in cents not dollars (stripe uses cents as well)
