@@ -14,6 +14,8 @@
         <li>
           <%= link_to 'Home', :root %>
         </li>
+
+
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             Categories
@@ -46,13 +48,22 @@
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            <span class="text-danger"> User </span>
+            <span class="text-danger">
+              <% if session[:user_id] %>
+                <%= current_user.name %>
+              <% else %>
+                Login
+              <% end %>
+            </span>
             <span class="caret"></span>
         </a>
         <ul class="dropdown-menu">
-          <li> <%= link_to 'Logout', [:logout] %> </li>
-          <li> <%= link_to 'Sign-up', [:signup] %> </li>
-          <li> <%= link_to 'Sign-in', [:login] %> </li>
+          <% if session[:user_id] %>
+            <li> <%= link_to 'Logout', [:logout] %> </li>
+          <% else %>
+            <li> <%= link_to 'Sign-up', [:signup] %> </li>
+            <li> <%= link_to 'Sign-in', [:login] %> </li>
+          <% end %>
         </ul>
       </ul>
 
