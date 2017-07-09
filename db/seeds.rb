@@ -35,13 +35,13 @@ puts "Re-creating Products ..."
 
 Product.destroy_all
 
-cat1.products.create!({
-  name:  'Men\'s Classy shirt',
-  description: Faker::Hipster.paragraph(4),
-  image: open_asset('apparel1.jpg'),
-  quantity: 0,
-  price: 64.99
-})
+p1 = cat1.products.create!({
+      name:  'Men\'s Classy shirt',
+      description: Faker::Hipster.paragraph(4),
+      image: open_asset('apparel1.jpg'),
+      quantity: 0,
+      price: 64.99
+    })
 
 cat1.products.create!({
   name:  'Women\'s Zebra pants',
@@ -132,5 +132,58 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+puts "re-creating users"
+
+User.destroy_all
+
+User.create!({
+    name: "Kian",
+    email: "kian.akhavan@gmail.com",
+    password_digest: "kian1234"
+  })
+
+User.create!({
+    name: "Jorge",
+    email: "jorge@gmail.com",
+    password_digest: "kian1234"
+  })
+
+User.create!({
+    name: "Jeter",
+    email: "jeter@gmail.com",
+    password_digest: "kian1234"
+  })
+
+puts "re-creating reviews"
+
+Review.destroy_all
+
+Review.create!({
+  product_id: 1,
+  user_id: 1,
+  body: "This is awesome!",
+  rating: 5
+  })
+
+Review.create!({
+  product_id: 1,
+  user_id: 2,
+  body: "Terrible product.",
+  rating: 1
+  })
+
+Review.create!({
+  product_id: 3,
+  user_id: 3,
+  body: "Mehhhh!",
+  rating: 3
+  })
+
+Review.create!({
+  product_id: 2,
+  user_id: 1,
+  body: "This product met all my expectations. Would totally recommend",
+  rating: 4
+  })
 
 puts "DONE!"
